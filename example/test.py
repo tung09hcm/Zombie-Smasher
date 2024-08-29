@@ -10,7 +10,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Rotate Image on Click")
 
 # Tải hình ảnh
-image = pygame.image.load("iron_axe.png")  # Thay "your_image.png" bằng đường dẫn đến hình ảnh của bạn
+image = pygame.image.load("../iron_axe.png")  # Thay "your_image.png" bằng đường dẫn đến hình ảnh của bạn
 image_rect = image.get_rect(center=(screen_width // 2, screen_height // 2))
 
 # Góc xoay ban đầu

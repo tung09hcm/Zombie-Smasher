@@ -45,7 +45,7 @@ def restrictMousePosition(mouse_pos, restricted_rect):
 
 
 def getBackground(name):
-    image = pygame.image.load(join("assets", "Background", name))
+    image = pygame.image.load(join("../assets", "Background", name))
     _, _, width, height = image.get_rect()
     titles = []
 
@@ -82,7 +82,7 @@ def main(window):
 
     clock = pygame.time.Clock()
     background, bg_image = getBackground("Green.png")
-    cursor_image = pygame.image.load("iron_axe.png")
+    cursor_image = pygame.image.load("../iron_axe.png")
     zombie = pygame.image.load("zombie.png")
     # Lấy kích thước hiện tại của ảnh
     original_width, original_height = zombie.get_size()
@@ -115,7 +115,7 @@ def main(window):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     mouse_x, mouse_y = event.pos
-                    cursor_image = pygame.image.load("iron_axe_swing.png")
+                    cursor_image = pygame.image.load("../iron_axe_swing.png")
                     zombie = pygame.image.load("zombie_head.png")
                     # Lấy kích thước hiện tại của ảnh
                     original_width, original_height = zombie.get_size()
@@ -129,7 +129,7 @@ def main(window):
             if event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     mouse_x, mouse_y = event.pos
-                    cursor_image = pygame.image.load("iron_axe.png")
+                    cursor_image = pygame.image.load("../iron_axe.png")
 
     pygame.quit()
     quit()
