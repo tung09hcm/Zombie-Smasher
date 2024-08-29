@@ -1,8 +1,8 @@
-# Zombie Smash
+# Zombie Smasher
 
 ## Overview
 
-"Đập Đầu Zombie" is an engaging and dynamic game where players face waves of zombies with different abilities and defenses. Players must use strategy, timing, and skill to defeat zombies equipped with various helmets, including iron helmets and construction helmets, each offering unique challenges.
+"Zombie Smasher" is an engaging and dynamic game where players face waves of zombies with different abilities and defenses. Players must use strategy, timing, and skill to defeat zombies equipped with various helmets, including iron helmets and construction helmets, each offering unique challenges.
 
 ## Features
 

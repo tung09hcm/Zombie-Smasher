@@ -5,9 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aeade9b8-e27a-444d-8051-f54d06950088" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/catch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/apple_golden.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/crack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/crack0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/crack1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/diamond.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/diamond_helmet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/diamond_helmet0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/diamond_helmet1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/experience_bottle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/gold_helmet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/gold_helmet0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/gold_helmet1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/gold_ingot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/iron_helmet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/iron_helmet0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/iron_helmet1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/zombie0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/zombie1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/zombie2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/zombie3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zombie/zombie4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +62,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Python.catch.executor": "Run",
     "Python.entity.executor": "Run",
+    "Python.game.executor": "Run",
     "Python.main.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
