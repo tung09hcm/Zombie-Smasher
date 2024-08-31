@@ -1,11 +1,19 @@
 import os
 import random
-
 import pygame
-
+import threading
 from os.path import join
 
 pygame.init()
+pygame.mixer.init()
+
+sound_folder = 'zombie_sound'
+sound_effects = {}
+for file_name in os.listdir(sound_folder):
+    if file_name.endswith('.ogg'):
+        sound_name = os.path.splitext(file_name)[0]
+        full_path = os.path.join(sound_folder, file_name)
+        sound_effects[sound_name] = pygame.mixer.Sound(full_path)
 
 pygame.display.set_caption("Platformer")
 pygame.mouse.set_visible(False)  # Ẩn con trỏ mặc định
@@ -91,8 +99,6 @@ class DeathAnimation:
         # Tính toán vị trí để vẽ hình ảnh xoay
         rotated_rect = self.rotated_image.get_rect(center=self.image.get_rect(topleft=(self.x, self.y)).center)
         window.blit(self.rotated_image, rotated_rect.topleft)
-
-
 class Helmet:
     def __init__(self,x,y,image_name):
         self.x = x
@@ -148,6 +154,13 @@ class Mob:
         self.alive = True
 
     def draw(self, window):
+        if self.x < 0:
+            self.x = 0
+        elif self.x > (WIDTH - ZOMBIE_WIDTH):
+            self.x = WIDTH - ZOMBIE_WIDTH
+        if self.y < 0:
+            self.y = 0
+
         if self.alive:
             window.blit(self.image, (self.x, self.y))
             window.blit(self.helmet.image, (self.x, self.y))
@@ -167,7 +180,7 @@ class Mob:
 def spawn_random_zombie():
     x = random.randint(0, WIDTH - ZOMBIE_WIDTH)  # Tạo tọa độ x ngẫu nhiên trong giới hạn màn hình
     y = random.randint(0, 100)  # Tọa độ y ngẫu nhiên từ 0 đến 100
-    vel = random.randint(1, 3)  # Tốc độ di chuyển ngẫu nhiên
+    vel = random.randint(1, 5)  # Tốc độ di chuyển ngẫu nhiên
     sprite = 0  # Sprite khởi đầu
     helmet_img_name = "null.png"  # Tên ảnh mũ ban đầu
     random_image = random.randint(0,2)
@@ -178,6 +191,8 @@ def spawn_random_zombie():
     else:
         helmet_img_name = "diamond_helmet.png"
     return Mob(x, y, vel, sprite, helmet_img_name)
+def play_sound_and_wait(sound_name):
+    sound_effects[sound_name].play()
 
 def main(window):
     mobs = []
@@ -189,7 +204,7 @@ def main(window):
     spawn_time = 0
 
     mobs = []
-
+    zombie_sound = True
     check = True
     deaths = []
 
@@ -209,18 +224,34 @@ def main(window):
         for death in deaths:
             death.update()
 
+        # if len(mobs) > 0 and zombie_sound:
+        #     zombie_sound = False
+        #     thread1 = threading.Thread(target=lambda: play_sound_and_wait('Zombie_step1'))
+        #     thread1.start()
+        #
+        #     thread1.join()
+        #     zombie_sound = True
+
         # Xóa các zombie chết khi đã hoàn tất hiệu ứng
         deaths = [death for death in deaths if death.timer <= 20]
 
         for i, mob in enumerate(mobs):
+            if mob.y >= HEIGHT:
+                run = False
             if mob.rect.collidepoint(mouse_x, mouse_y):
                 for event in pygame.event.get():
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if event.button == 1:
+
                             cursor_image = pygame.image.load("iron_axe_swing.png")
                             mob.x = mob.x - 5
                             mob.y = mob.y - 10
                             if mob.helmet.durability > 0:
+                                a = random.randint(1,2)
+                                if a == 1:
+                                    sound_effects['Zombie_hurt1'].play()
+                                else:
+                                    sound_effects['Zombie_hurt2'].play()
                                 mob.helmet.durability -= 1
                                 print("HIT!!! durability: " + str(mob.helmet.durability))
                                 mob.helmet.update()
@@ -232,6 +263,7 @@ def main(window):
                                 mob.alive = False
                                 mobs.pop(i)
                                 deaths.append(DeathAnimation(x, y))
+                                sound_effects['Zombie_death'].play()
                     if event.type == pygame.MOUSEBUTTONUP:
                         if event.button == 1:
                             cursor_image = pygame.image.load("iron_axe.png")
@@ -244,8 +276,8 @@ def main(window):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
-                break
+                pygame.quit()
+                return
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     cursor_image = pygame.image.load("iron_axe_swing.png")
@@ -253,7 +285,26 @@ def main(window):
                 if event.button == 1:
                     cursor_image = pygame.image.load("iron_axe.png")
 
-    pygame.quit()
+    black = (0, 0, 0)
+    red = (255, 0, 0)
+    font = pygame.font.SysFont(None, 100)
+    text = font.render('YOU LOSE', True, red)
+    text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+    while True:
+        # Kiểm tra sự kiện để đóng cửa sổ
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+
+        # Tô nền màu đen
+        window.fill(black)
+
+        # Vẽ chữ "YOU LOSE" lên màn hình
+        window.blit(text, text_rect)
+
+        # Cập nhật màn hình
+        pygame.display.flip()
 
 if __name__ == "__main__":
     main(window)
