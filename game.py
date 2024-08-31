@@ -1,9 +1,9 @@
 import os
 import random
-import math
+
 import pygame
-from os import listdir
-from os.path import isfile, join
+
+from os.path import join
 
 pygame.init()
 
@@ -31,8 +31,9 @@ def getBackground(name):
             titles.append(pos)
 
     return titles, image
-def draw(window, background, bg_image,zombie,mobs, cursor_image, cursor_pos):
+def draw(window, background, bg_image,zombie,mobs, deaths, cursor_image, cursor_pos):
     # Xóa màn hình trước khi vẽ lại
+
     window.fill((255, 255, 255))  # Màu nền trắng hoặc màu nền phù hợp với trò chơi
 
     # Vẽ nền
@@ -40,8 +41,11 @@ def draw(window, background, bg_image,zombie,mobs, cursor_image, cursor_pos):
         window.blit(bg_image, title)
 
     for mob in mobs:
-        # Vẽ zombie tại tọa độ (0,0)
         mob.draw(window)
+
+    for death in deaths:
+        death.draw(window)
+        death.update()
 
     # Vẽ con trỏ tùy chỉnh sau cùng để nằm trên các đối tượng khác
     x,y = cursor_pos
@@ -49,6 +53,45 @@ def draw(window, background, bg_image,zombie,mobs, cursor_image, cursor_pos):
 
     # Cập nhật màn hình sau khi vẽ tất cả các đối tượng
     pygame.display.update()
+
+
+class DeathAnimation:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.angle = 0
+        self.max_angle = 45  # Giới hạn góc quay là 45 độ
+        self.rotation_speed = 1
+        self.falling_speed = 3
+        self.timer = 0
+
+        image_path = os.path.join('zombie', "head.png")
+        self.original_image = pygame.image.load(image_path)
+        self.image = pygame.transform.scale(self.original_image, (ZOMBIE_WIDTH, ZOMBIE_HEIGHT))
+        self.rotated_image = self.image
+
+        image_width, image_height = self.image.get_size()
+        self.bottom_y_position = self.y + image_height
+
+    def update(self):
+        self.timer += 1
+
+        # Quay đầu lên đến góc tối đa
+        if self.angle < self.max_angle:
+            self.angle += self.rotation_speed
+            if self.angle > self.max_angle:
+                self.angle = self.max_angle
+            self.rotated_image = pygame.transform.rotate(self.image, self.angle)
+
+        # Khi đã quay đủ góc, bắt đầu rơi xuống
+        if self.angle == self.max_angle:
+            self.y += self.falling_speed
+
+    def draw(self, window):
+        # Tính toán vị trí để vẽ hình ảnh xoay
+        rotated_rect = self.rotated_image.get_rect(center=self.image.get_rect(topleft=(self.x, self.y)).center)
+        window.blit(self.rotated_image, rotated_rect.topleft)
+
 
 class Helmet:
     def __init__(self,x,y,image_name):
@@ -89,7 +132,6 @@ class Helmet:
                 self.image_name = "diamond_helmet1.png"
         self.image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(self.image, (ZOMBIE_WIDTH, HELMET_HEIGHT))
-
 class Mob:
     def __init__(self, x, y, vel, sprite, helmet_img_name):
         self.x = x
@@ -103,22 +145,39 @@ class Mob:
         self.image = pygame.transform.scale(self.image, (ZOMBIE_WIDTH, ZOMBIE_HEIGHT))
 
         self.rect = pygame.Rect(x, y,ZOMBIE_WIDTH, ZOMBIE_HEIGHT)
+        self.alive = True
 
     def draw(self, window):
-        window.blit(self.image, (self.x, self.y))
-        window.blit(self.helmet.image, (self.x, self.y))
-
+        if self.alive:
+            window.blit(self.image, (self.x, self.y))
+            window.blit(self.helmet.image, (self.x, self.y))
     def move(self):
-        # Di chuyển mob theo trục x và trục y
-        self.y += self.vel
-        self.rect.topleft = (self.x, self.y)
+        if self.alive:
+            # Di chuyển mob theo trục x và trục y
+            self.y += self.vel
+            self.rect.topleft = (self.x, self.y)
 
     def update(self):
-        num = random.randint(0, 4)
-        image_name = "zombie" + str(num) + ".png"
-        image_path = os.path.join('zombie', image_name)
-        self.image = pygame.image.load(image_path)
-        self.image = pygame.transform.scale(self.image, (ZOMBIE_WIDTH, ZOMBIE_HEIGHT))
+        if self.alive:
+            num = random.randint(0, 4)
+            image_name = "zombie" + str(num) + ".png"
+            image_path = os.path.join('zombie', image_name)
+            self.image = pygame.image.load(image_path)
+            self.image = pygame.transform.scale(self.image, (ZOMBIE_WIDTH, ZOMBIE_HEIGHT))
+def spawn_random_zombie():
+    x = random.randint(0, WIDTH - ZOMBIE_WIDTH)  # Tạo tọa độ x ngẫu nhiên trong giới hạn màn hình
+    y = random.randint(0, 100)  # Tọa độ y ngẫu nhiên từ 0 đến 100
+    vel = random.randint(1, 3)  # Tốc độ di chuyển ngẫu nhiên
+    sprite = 0  # Sprite khởi đầu
+    helmet_img_name = "null.png"  # Tên ảnh mũ ban đầu
+    random_image = random.randint(0,2)
+    if random_image == 0:
+        helmet_img_name = "null.png"
+    elif random_image == 1:
+        helmet_img_name = "iron_helmet.png"
+    else:
+        helmet_img_name = "diamond_helmet.png"
+    return Mob(x, y, vel, sprite, helmet_img_name)
 
 def main(window):
     mobs = []
@@ -127,48 +186,61 @@ def main(window):
     background, bg_image = getBackground("Green.png")
     cursor_image = pygame.image.load("iron_axe.png")
     zombie = pygame.image.load("example/zombie.png")
+    spawn_time = 0
 
+    mobs = []
 
-    mobs = [Mob(100, 100, 1,0, "null.png"),
-            Mob(200, 150, 1,0, "diamond_helmet.png")]
-
+    check = True
+    deaths = []
 
     while run:
         clock.tick(FPS)
         mouse_x, mouse_y = pygame.mouse.get_pos()
+        spawn_time += 1
+        if spawn_time >= 120:
+            so_luong = random.randint(1, 3)
+            for _ in range(so_luong):
+                mobs.append(spawn_random_zombie())
+            spawn_time = 0
+        if check:
+            draw(window, background, bg_image, zombie, mobs, deaths, cursor_image, (mouse_x, mouse_y))
 
-        draw(window, background, bg_image,zombie, mobs,cursor_image, (mouse_x, mouse_y))
-        i = 0
-        for mob in mobs:
+        # Cập nhật và xóa các zombie chết
+        for death in deaths:
+            death.update()
+
+        # Xóa các zombie chết khi đã hoàn tất hiệu ứng
+        deaths = [death for death in deaths if death.timer <= 20]
+
+        for i, mob in enumerate(mobs):
             if mob.rect.collidepoint(mouse_x, mouse_y):
                 for event in pygame.event.get():
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if event.button == 1:
                             cursor_image = pygame.image.load("iron_axe_swing.png")
+                            mob.x = mob.x - 5
+                            mob.y = mob.y - 10
                             if mob.helmet.durability > 0:
                                 mob.helmet.durability -= 1
                                 print("HIT!!! durability: " + str(mob.helmet.durability))
                                 mob.helmet.update()
                             else:
-                                # durability = 0
                                 print("1 hit and gone")
-                                # ============ ZOMBIE DEATH ANIMATION FUNCTION HERRE ============ #
-
-                                # ============ DROP ITEM FUNCTION HERE ============ #
-
+                                x = mob.x
+                                y = mob.y
+                                y_bot = y + ZOMBIE_HEIGHT
+                                mob.alive = False
                                 mobs.pop(i)
+                                deaths.append(DeathAnimation(x, y))
                     if event.type == pygame.MOUSEBUTTONUP:
                         if event.button == 1:
                             cursor_image = pygame.image.load("iron_axe.png")
-
-
             mob.sprite += 1
             if mob.sprite == 3:
                 mob.move()
             if mob.sprite == 5:
                 mob.update()
                 mob.sprite = 0
-            i += 1
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -181,6 +253,8 @@ def main(window):
                 if event.button == 1:
                     cursor_image = pygame.image.load("iron_axe.png")
 
+    pygame.quit()
 
 if __name__ == "__main__":
     main(window)
+
