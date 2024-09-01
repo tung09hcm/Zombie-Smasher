@@ -198,22 +198,48 @@ def play_sound_and_wait(sound_name):
 def main(window):
     cursor_image = pygame.image.load("iron_axe.png")
     menu_image = pygame.image.load("game_background.png")  # Load once, outside the loop
-    color = (52, 219, 130)
-    text_surface = custom_font.render("ZOMBIE SMASHER", True, color)
-    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - HEIGHT // 6))
+
+    play_image = pygame.image.load("play_button.png")
+    quit_image = pygame.image.load("quit_button.png")
+
+    # Get the original size of the images
+    play_width, play_height = play_image.get_size()
+    quit_width, quit_height = quit_image.get_size()
+
+    # Scale images to half size
+    play_image = pygame.transform.scale(play_image, (play_width // 2, play_height // 2))
+    quit_image = pygame.transform.scale(quit_image, (quit_width // 2, quit_height // 2))
+
+    color = (32, 222, 57)
+    black = (0,0,0)
+    custom_border_font = pygame.font.Font(font_path, 59)
+    border_surface = custom_border_font.render("ZOMBIE SMASHER", True, black)
+    text_surface = custom_font.render(" ZOMBIE SMASHER", True, color)
+    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - HEIGHT/6))
+    play_rect = play_image.get_rect(topleft=(WIDTH // 2 - play_width // 4, HEIGHT // 2))
+    quit_rect = quit_image.get_rect(topleft=(WIDTH // 2 - quit_width // 4, HEIGHT // 2 + quit_height))
     while True:
         window.blit(menu_image, (0, 0))  # Draw the background image
+        window.blit(border_surface, (text_rect))
         window.blit(text_surface, (text_rect))
+        window.blit(play_image, (WIDTH // 2 - play_width//4, HEIGHT // 2 ))
+        window.blit(quit_image, (WIDTH // 2 - quit_width//4, HEIGHT // 2 + quit_height))
+
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        if play_rect.collidepoint(mouse_x, mouse_y):
+            if pygame.mouse.get_pressed()[0]:
+                run_x = False
+                break
+        if quit_rect.collidepoint(mouse_x, mouse_y):
+            if pygame.mouse.get_pressed()[0]:
+                pygame.quit()
+                return
+
         run_x = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
-                    print("Enter key was pressed!")
-                    run_x = False
-                    break
         if not run_x:
             break
         pygame.display.flip()
@@ -312,25 +338,24 @@ def main(window):
                 if event.button == 1:
                     cursor_image = pygame.image.load("iron_axe.png")
 
-
-
-    color = (52, 219, 130)
-    text_surface = custom_font.render("ZOMBIE EAT YOUR BRAIN", True, color)
-    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - HEIGHT // 6))
+    gameover = pygame.image.load("gameover.png")  # Load once, outside the loop
     while True:
+        window.blit(gameover, (0, 0))  # Draw the background image
+        run_x = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-
-        # Điền màu nền
-        window.fill((0, 0, 0))
-
-        # Vẽ văn bản lên màn hình
-        window.blit(text_surface, (text_rect))
-
-        # Cập nhật màn hình
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
+                    print("Enter key was pressed!")
+                    run_x = False
+                    break
+        if not run_x:
+            break
         pygame.display.flip()
+
+
 
 if __name__ == "__main__":
     main(window)
