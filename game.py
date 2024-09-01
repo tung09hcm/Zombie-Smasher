@@ -6,7 +6,8 @@ from os.path import join
 
 pygame.init()
 pygame.mixer.init()
-
+font_path = 'Another Danger - Demo.otf'
+custom_font = pygame.font.Font(font_path, 60)
 sound_folder = 'zombie_sound'
 sound_effects = {}
 for file_name in os.listdir(sound_folder):
@@ -16,7 +17,7 @@ for file_name in os.listdir(sound_folder):
         sound_effects[sound_name] = pygame.mixer.Sound(full_path)
 
 pygame.display.set_caption("Platformer")
-pygame.mouse.set_visible(False)  # Ẩn con trỏ mặc định
+
 
 WIDTH = 750
 HEIGHT = 600
@@ -69,7 +70,7 @@ class DeathAnimation:
         self.y = y
         self.angle = 0
         self.max_angle = 45  # Giới hạn góc quay là 45 độ
-        self.rotation_speed = 1
+        self.rotation_speed = 2
         self.falling_speed = 3
         self.timer = 0
 
@@ -195,11 +196,33 @@ def play_sound_and_wait(sound_name):
     sound_effects[sound_name].play()
 
 def main(window):
-    mobs = []
+    cursor_image = pygame.image.load("iron_axe.png")
+    menu_image = pygame.image.load("game_background.png")  # Load once, outside the loop
+    color = (52, 219, 130)
+    text_surface = custom_font.render("ZOMBIE SMASHER", True, color)
+    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - HEIGHT // 6))
+    while True:
+        window.blit(menu_image, (0, 0))  # Draw the background image
+        window.blit(text_surface, (text_rect))
+        run_x = True
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
+                    print("Enter key was pressed!")
+                    run_x = False
+                    break
+        if not run_x:
+            break
+        pygame.display.flip()
+
+    pygame.mouse.set_visible(False)  # Ẩn con trỏ mặc định
     run = True
     clock = pygame.time.Clock()
     background, bg_image = getBackground("Green.png")
-    cursor_image = pygame.image.load("iron_axe.png")
+
     zombie = pygame.image.load("example/zombie.png")
     spawn_time = 0
 
@@ -233,7 +256,7 @@ def main(window):
         #     zombie_sound = True
 
         # Xóa các zombie chết khi đã hoàn tất hiệu ứng
-        deaths = [death for death in deaths if death.timer <= 20]
+        deaths = [death for death in deaths if death.timer <= 35]
 
         for i, mob in enumerate(mobs):
             if mob.y >= HEIGHT:
@@ -247,12 +270,16 @@ def main(window):
                             mob.x = mob.x - 5
                             mob.y = mob.y - 10
                             if mob.helmet.durability > 0:
+                                mob.helmet.durability -= 1
+                                if mob.helmet.durability == 0:
+                                    sound_effects['break'].play()
                                 a = random.randint(1,2)
                                 if a == 1:
                                     sound_effects['Zombie_hurt1'].play()
                                 else:
                                     sound_effects['Zombie_hurt2'].play()
-                                mob.helmet.durability -= 1
+
+
                                 print("HIT!!! durability: " + str(mob.helmet.durability))
                                 mob.helmet.update()
                             else:
@@ -285,23 +312,22 @@ def main(window):
                 if event.button == 1:
                     cursor_image = pygame.image.load("iron_axe.png")
 
-    black = (0, 0, 0)
-    red = (255, 0, 0)
-    font = pygame.font.SysFont(None, 100)
-    text = font.render('YOU LOSE', True, red)
-    text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+
+
+    color = (52, 219, 130)
+    text_surface = custom_font.render("ZOMBIE EAT YOUR BRAIN", True, color)
+    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - HEIGHT // 6))
     while True:
-        # Kiểm tra sự kiện để đóng cửa sổ
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
 
-        # Tô nền màu đen
-        window.fill(black)
+        # Điền màu nền
+        window.fill((0, 0, 0))
 
-        # Vẽ chữ "YOU LOSE" lên màn hình
-        window.blit(text, text_rect)
+        # Vẽ văn bản lên màn hình
+        window.blit(text_surface, (text_rect))
 
         # Cập nhật màn hình
         pygame.display.flip()
