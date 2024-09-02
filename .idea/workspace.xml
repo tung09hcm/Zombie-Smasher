@@ -5,12 +5,181 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aeade9b8-e27a-444d-8051-f54d06950088" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gameover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/play_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quit_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/20 Enemies.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Background/Brown.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Background/Brown.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Background/Green.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Background/Green.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Hello.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Break.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Hit (28x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box1/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Break.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Hit (28x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box2/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Break.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Hit (28x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Boxes/Box3/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (Flag Out) (64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Checkpoints/End/End (Idle).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Checkpoints/End/End (Pressed) (64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Checkpoints/Start/Start (Idle).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Checkpoints/Start/Start (Moving) (64x64).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Bananas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Cherries.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Collected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Kiwi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Melon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Orange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Pineapple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Items/Fruits/Strawberry.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/Appearing (96x96).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/Desappearing (96x96).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/MaskDude/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/NinjaFrog/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/PinkMan/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/double_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MainCharacters/VirtualGuy/wall_jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Achievements.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Leaderboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Levels.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Previous.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Restart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Buttons/Volume.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Levels/50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Text/Text (Black) (8x10).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Menu/Text/Text (White) (8x10).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Other/Confetti (16x16).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Other/Dust Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Other/Shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Other/Transition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Terrain/Terrain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Arrow/Hit (18x18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Arrow/Idle (18x18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Blocks/HitSide (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Blocks/HitTop (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Blocks/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Blocks/Part 1 (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Blocks/Part 2 (22x22).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Falling Platforms/Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Falling Platforms/On (32x10).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Fan/Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Fan/On (24x8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Fire/hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Fire/off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Fire/on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Platforms/Brown Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Platforms/Brown On (32x8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Platforms/Chain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Platforms/Grey Off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Platforms/Grey On (32x8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Rock Head/Blink (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Rock Head/Bottom Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Rock Head/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Rock Head/Left Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Rock Head/Right Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Rock Head/Top Hit (42x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Ice Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Mud Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Sand Mud Ice (16x6).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Sand Mud Ice/Sand Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Saw/Chain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Saw/off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Saw/on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spike Head/Blink (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spike Head/Bottom Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spike Head/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spike Head/Left Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spike Head/Right Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spike Head/Top Hit (54x52).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spiked Ball/Chain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spiked Ball/Spiked Ball.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Spikes/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Trampoline/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Traps/Trampoline/Jump (28x28).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font_test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/game_background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameover.png" beforeDir="false" afterPath="$PROJECT_DIR$/gameover.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/head_animation.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +232,7 @@
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\assets" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\example" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame" />
     </key>

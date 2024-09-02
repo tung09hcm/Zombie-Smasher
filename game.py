@@ -1,7 +1,6 @@
 import os
 import random
 import pygame
-import threading
 from os.path import join
 
 pygame.init()
@@ -16,7 +15,7 @@ for file_name in os.listdir(sound_folder):
         full_path = os.path.join(sound_folder, file_name)
         sound_effects[sound_name] = pygame.mixer.Sound(full_path)
 
-pygame.display.set_caption("Platformer")
+pygame.display.set_caption("Zombie Smasher")
 
 
 WIDTH = 750
@@ -196,6 +195,9 @@ def play_sound_and_wait(sound_name):
     sound_effects[sound_name].play()
 
 def main(window):
+
+    hits = 0
+
     cursor_image = pygame.image.load("iron_axe.png")
     menu_image = pygame.image.load("game_background.png")  # Load once, outside the loop
 
@@ -228,6 +230,7 @@ def main(window):
         mouse_x, mouse_y = pygame.mouse.get_pos()
         if play_rect.collidepoint(mouse_x, mouse_y):
             if pygame.mouse.get_pressed()[0]:
+                sound_effects['Zombie_idle2'].play()
                 run_x = False
                 break
         if quit_rect.collidepoint(mouse_x, mouse_y):
@@ -247,7 +250,7 @@ def main(window):
     pygame.mouse.set_visible(False)  # Ẩn con trỏ mặc định
     run = True
     clock = pygame.time.Clock()
-    background, bg_image = getBackground("Green.png")
+    background, bg_image = getBackground("Brown.png")
 
     zombie = pygame.image.load("example/zombie.png")
     spawn_time = 0
@@ -273,14 +276,6 @@ def main(window):
         for death in deaths:
             death.update()
 
-        # if len(mobs) > 0 and zombie_sound:
-        #     zombie_sound = False
-        #     thread1 = threading.Thread(target=lambda: play_sound_and_wait('Zombie_step1'))
-        #     thread1.start()
-        #
-        #     thread1.join()
-        #     zombie_sound = True
-
         # Xóa các zombie chết khi đã hoàn tất hiệu ứng
         deaths = [death for death in deaths if death.timer <= 35]
 
@@ -291,7 +286,6 @@ def main(window):
                 for event in pygame.event.get():
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if event.button == 1:
-
                             cursor_image = pygame.image.load("iron_axe_swing.png")
                             mob.x = mob.x - 5
                             mob.y = mob.y - 10
@@ -309,6 +303,7 @@ def main(window):
                                 print("HIT!!! durability: " + str(mob.helmet.durability))
                                 mob.helmet.update()
                             else:
+                                hits += 1
                                 print("1 hit and gone")
                                 x = mob.x
                                 y = mob.y
@@ -339,21 +334,22 @@ def main(window):
                     cursor_image = pygame.image.load("iron_axe.png")
 
     gameover = pygame.image.load("gameover.png")  # Load once, outside the loop
+    sound_effects['Zombie_idle2'].play()
+    print("HITS: " + str(hits))
+    default_font = pygame.font.SysFont(None, 80)
+    text_surface = default_font.render("X " + str(hits), True, (255, 255, 255))
     while True:
-        window.blit(gameover, (0, 0))  # Draw the background image
+        window.blit(gameover, (0, 0))
+        window.blit(text_surface, (380, 410))
         run_x = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
-                    print("Enter key was pressed!")
-                    run_x = False
-                    break
         if not run_x:
             break
         pygame.display.flip()
+
 
 
 
