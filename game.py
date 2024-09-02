@@ -39,9 +39,11 @@ def getBackground(name):
             titles.append(pos)
 
     return titles, image
-def draw(window, background, bg_image,zombie,mobs, deaths, cursor_image, cursor_pos):
+def draw(window, background, bg_image,zombie,mobs, deaths, cursor_image, cursor_pos, hits):
     # Xóa màn hình trước khi vẽ lại
-
+    status = pygame.image.load("status.png")
+    default_font = pygame.font.SysFont(None, 80)
+    text_surface = default_font.render( str(hits), True, (255, 255, 255))
     window.fill((255, 255, 255))  # Màu nền trắng hoặc màu nền phù hợp với trò chơi
 
     # Vẽ nền
@@ -59,6 +61,8 @@ def draw(window, background, bg_image,zombie,mobs, deaths, cursor_image, cursor_
     x,y = cursor_pos
     window.blit(cursor_image, (x-32, y-32))
 
+    window.blit(status, (0, 0))
+    window.blit(text_surface, (10, 10))
     # Cập nhật màn hình sau khi vẽ tất cả các đối tượng
     pygame.display.update()
 
@@ -196,57 +200,11 @@ def play_sound_and_wait(sound_name):
 
 def main(window):
 
-    hits = 0
-
     cursor_image = pygame.image.load("iron_axe.png")
-    menu_image = pygame.image.load("game_background.png")  # Load once, outside the loop
 
-    play_image = pygame.image.load("play_button.png")
-    quit_image = pygame.image.load("quit_button.png")
 
-    # Get the original size of the images
-    play_width, play_height = play_image.get_size()
-    quit_width, quit_height = quit_image.get_size()
 
-    # Scale images to half size
-    play_image = pygame.transform.scale(play_image, (play_width // 2, play_height // 2))
-    quit_image = pygame.transform.scale(quit_image, (quit_width // 2, quit_height // 2))
-
-    color = (32, 222, 57)
-    black = (0,0,0)
-    custom_border_font = pygame.font.Font(font_path, 59)
-    border_surface = custom_border_font.render("ZOMBIE SMASHER", True, black)
-    text_surface = custom_font.render(" ZOMBIE SMASHER", True, color)
-    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - HEIGHT/6))
-    play_rect = play_image.get_rect(topleft=(WIDTH // 2 - play_width // 4, HEIGHT // 2))
-    quit_rect = quit_image.get_rect(topleft=(WIDTH // 2 - quit_width // 4, HEIGHT // 2 + quit_height))
-    while True:
-        window.blit(menu_image, (0, 0))  # Draw the background image
-        window.blit(border_surface, (text_rect))
-        window.blit(text_surface, (text_rect))
-        window.blit(play_image, (WIDTH // 2 - play_width//4, HEIGHT // 2 ))
-        window.blit(quit_image, (WIDTH // 2 - quit_width//4, HEIGHT // 2 + quit_height))
-
-        mouse_x, mouse_y = pygame.mouse.get_pos()
-        if play_rect.collidepoint(mouse_x, mouse_y):
-            if pygame.mouse.get_pressed()[0]:
-                sound_effects['Zombie_idle2'].play()
-                run_x = False
-                break
-        if quit_rect.collidepoint(mouse_x, mouse_y):
-            if pygame.mouse.get_pressed()[0]:
-                pygame.quit()
-                return
-
-        run_x = True
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                return
-        if not run_x:
-            break
-        pygame.display.flip()
-
+    hits = 0
     pygame.mouse.set_visible(False)  # Ẩn con trỏ mặc định
     run = True
     clock = pygame.time.Clock()
@@ -270,7 +228,7 @@ def main(window):
                 mobs.append(spawn_random_zombie())
             spawn_time = 0
         if check:
-            draw(window, background, bg_image, zombie, mobs, deaths, cursor_image, (mouse_x, mouse_y))
+            draw(window, background, bg_image, zombie, mobs, deaths, cursor_image, (mouse_x, mouse_y), hits)
 
         # Cập nhật và xóa các zombie chết
         for death in deaths:
@@ -298,8 +256,6 @@ def main(window):
                                     sound_effects['Zombie_hurt1'].play()
                                 else:
                                     sound_effects['Zombie_hurt2'].play()
-
-
                                 print("HIT!!! durability: " + str(mob.helmet.durability))
                                 mob.helmet.update()
                             else:
@@ -341,18 +297,58 @@ def main(window):
     while True:
         window.blit(gameover, (0, 0))
         window.blit(text_surface, (380, 410))
-        run_x = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
+        pygame.display.flip()
+
+
+if __name__ == "__main__":
+    menu_image = pygame.image.load("game_background.png")  # Load once, outside the loop
+    play_image = pygame.image.load("play_button.png")
+    quit_image = pygame.image.load("quit_button.png")
+
+    # Get the original size of the images
+    play_width, play_height = play_image.get_size()
+    quit_width, quit_height = quit_image.get_size()
+
+    # Scale images to half size
+    play_image = pygame.transform.scale(play_image, (play_width // 2, play_height // 2))
+    quit_image = pygame.transform.scale(quit_image, (quit_width // 2, quit_height // 2))
+
+    color = (32, 222, 57)
+    black = (0, 0, 0)
+    custom_border_font = pygame.font.Font(font_path, 59)
+    border_surface = custom_border_font.render("ZOMBIE SMASHER", True, black)
+    text_surface = custom_font.render(" ZOMBIE SMASHER", True, color)
+    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - HEIGHT / 6))
+    play_rect = play_image.get_rect(topleft=(WIDTH // 2 - play_width // 4, HEIGHT // 2))
+    quit_rect = quit_image.get_rect(topleft=(WIDTH // 2 - quit_width // 4, HEIGHT // 2 + quit_height))
+    while True:
+        window.blit(menu_image, (0, 0))  # Draw the background image
+        window.blit(border_surface, (text_rect))
+        window.blit(text_surface, (text_rect))
+        window.blit(play_image, (WIDTH // 2 - play_width // 4, HEIGHT // 2))
+        window.blit(quit_image, (WIDTH // 2 - quit_width // 4, HEIGHT // 2 + quit_height))
+
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        if play_rect.collidepoint(mouse_x, mouse_y):
+            if pygame.mouse.get_pressed()[0]:
+                sound_effects['Zombie_idle2'].play()
+                run_x = False
+                break
+        if quit_rect.collidepoint(mouse_x, mouse_y):
+            if pygame.mouse.get_pressed()[0]:
+                pygame.quit()
+
+        run_x = True
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
         if not run_x:
             break
         pygame.display.flip()
 
-
-
-
-if __name__ == "__main__":
     main(window)
 
