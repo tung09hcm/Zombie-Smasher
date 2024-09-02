@@ -2,6 +2,8 @@ import os
 import random
 import pygame
 from os.path import join
+import ctypes
+import sys
 
 pygame.init()
 pygame.mixer.init()
@@ -14,6 +16,11 @@ for file_name in os.listdir(sound_folder):
         sound_name = os.path.splitext(file_name)[0]
         full_path = os.path.join(sound_folder, file_name)
         sound_effects[sound_name] = pygame.mixer.Sound(full_path)
+
+icon = pygame.image.load('head.png')
+pygame.display.set_icon(icon)
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
+pygame.display.set_icon(icon)
 
 pygame.display.set_caption("Zombie Smasher")
 
@@ -281,6 +288,7 @@ def main(window):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit()
                 return
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
@@ -300,6 +308,7 @@ def main(window):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit()
                 return
         pygame.display.flip()
 
@@ -341,11 +350,13 @@ if __name__ == "__main__":
         if quit_rect.collidepoint(mouse_x, mouse_y):
             if pygame.mouse.get_pressed()[0]:
                 pygame.quit()
+                sys.exit()
 
         run_x = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit()
         if not run_x:
             break
         pygame.display.flip()
