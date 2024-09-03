@@ -24,7 +24,6 @@ pygame.display.set_icon(icon)
 
 pygame.display.set_caption("Zombie Smasher")
 
-
 WIDTH = 750
 HEIGHT = 600
 FPS = 60
@@ -34,6 +33,7 @@ ZOMBIE_HEIGHT = 84
 HELMET_HEIGHT = 34
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
+
 
 def getBackground(name):
     image = pygame.image.load(join("assets", "Background", name))
@@ -46,11 +46,13 @@ def getBackground(name):
             titles.append(pos)
 
     return titles, image
-def draw(window, background, bg_image,zombie,mobs, deaths, cursor_image, cursor_pos, hits):
+
+
+def draw(window, background, bg_image, zombie, mobs, deaths, cursor_image, cursor_pos, hits):
     # Xóa màn hình trước khi vẽ lại
     status = pygame.image.load("status.png")
     default_font = pygame.font.SysFont(None, 80)
-    text_surface = default_font.render( str(hits), True, (255, 255, 255))
+    text_surface = default_font.render(str(hits), True, (255, 255, 255))
     window.fill((255, 255, 255))  # Màu nền trắng hoặc màu nền phù hợp với trò chơi
 
     # Vẽ nền
@@ -65,8 +67,8 @@ def draw(window, background, bg_image,zombie,mobs, deaths, cursor_image, cursor_
         death.update()
 
     # Vẽ con trỏ tùy chỉnh sau cùng để nằm trên các đối tượng khác
-    x,y = cursor_pos
-    window.blit(cursor_image, (x-32, y-32))
+    x, y = cursor_pos
+    window.blit(cursor_image, (x - 32, y - 32))
 
     window.blit(status, (0, 0))
     window.blit(text_surface, (10, 10))
@@ -110,8 +112,10 @@ class DeathAnimation:
         # Tính toán vị trí để vẽ hình ảnh xoay
         rotated_rect = self.rotated_image.get_rect(center=self.image.get_rect(topleft=(self.x, self.y)).center)
         window.blit(self.rotated_image, rotated_rect.topleft)
+
+
 class Helmet:
-    def __init__(self,x,y,image_name):
+    def __init__(self, x, y, image_name):
         self.x = x
         self.y = y
         self.image_name = image_name
@@ -143,25 +147,27 @@ class Helmet:
         elif self.type == "DIAMOND":
             if self.durability == 3:
                 image_path = os.path.join('zombie', "diamond_helmet0.png")
-                self.image_name ="diamond_helmet0.png"
+                self.image_name = "diamond_helmet0.png"
             elif self.durability == 1:
                 image_path = os.path.join('zombie', "diamond_helmet1.png")
                 self.image_name = "diamond_helmet1.png"
         self.image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(self.image, (ZOMBIE_WIDTH, HELMET_HEIGHT))
+
+
 class Mob:
     def __init__(self, x, y, vel, sprite, helmet_img_name):
         self.x = x
         self.y = y
         self.sprite = sprite
         self.vel = vel  # Vận tốc di chuyển
-        self.helmet = Helmet(x,y,helmet_img_name)
+        self.helmet = Helmet(x, y, helmet_img_name)
 
         image_path = os.path.join('zombie', "zombie0.png")
         self.image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(self.image, (ZOMBIE_WIDTH, ZOMBIE_HEIGHT))
 
-        self.rect = pygame.Rect(x, y,ZOMBIE_WIDTH, ZOMBIE_HEIGHT)
+        self.rect = pygame.Rect(x, y, ZOMBIE_WIDTH, ZOMBIE_HEIGHT)
         self.alive = True
 
     def draw(self, window):
@@ -175,6 +181,7 @@ class Mob:
         if self.alive:
             window.blit(self.image, (self.x, self.y))
             window.blit(self.helmet.image, (self.x, self.y))
+
     def move(self):
         if self.alive:
             # Di chuyển mob theo trục x và trục y
@@ -188,13 +195,15 @@ class Mob:
             image_path = os.path.join('zombie', image_name)
             self.image = pygame.image.load(image_path)
             self.image = pygame.transform.scale(self.image, (ZOMBIE_WIDTH, ZOMBIE_HEIGHT))
+
+
 def spawn_random_zombie():
     x = random.randint(0, WIDTH - ZOMBIE_WIDTH)  # Tạo tọa độ x ngẫu nhiên trong giới hạn màn hình
     y = random.randint(0, 100)  # Tọa độ y ngẫu nhiên từ 0 đến 100
     vel = random.randint(1, 5)  # Tốc độ di chuyển ngẫu nhiên
     sprite = 0  # Sprite khởi đầu
     helmet_img_name = "null.png"  # Tên ảnh mũ ban đầu
-    random_image = random.randint(0,2)
+    random_image = random.randint(0, 2)
     if random_image == 0:
         helmet_img_name = "null.png"
     elif random_image == 1:
@@ -202,14 +211,14 @@ def spawn_random_zombie():
     else:
         helmet_img_name = "diamond_helmet.png"
     return Mob(x, y, vel, sprite, helmet_img_name)
+
+
 def play_sound_and_wait(sound_name):
     sound_effects[sound_name].play()
 
+
 def main(window):
-
     cursor_image = pygame.image.load("iron_axe.png")
-
-
 
     hits = 0
     pygame.mouse.set_visible(False)  # Ẩn con trỏ mặc định
@@ -258,7 +267,7 @@ def main(window):
                                 mob.helmet.durability -= 1
                                 if mob.helmet.durability == 0:
                                     sound_effects['break'].play()
-                                a = random.randint(1,2)
+                                a = random.randint(1, 2)
                                 if a == 1:
                                     sound_effects['Zombie_hurt1'].play()
                                 else:
@@ -289,7 +298,6 @@ def main(window):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-                return
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     cursor_image = pygame.image.load("iron_axe_swing.png")
@@ -309,7 +317,6 @@ def main(window):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-                return
         pygame.display.flip()
 
 
@@ -336,8 +343,8 @@ if __name__ == "__main__":
     quit_rect = quit_image.get_rect(topleft=(WIDTH // 2 - quit_width // 4, HEIGHT // 2 + quit_height))
     while True:
         window.blit(menu_image, (0, 0))  # Draw the background image
-        window.blit(border_surface, (text_rect))
-        window.blit(text_surface, (text_rect))
+        window.blit(border_surface, text_rect)
+        window.blit(text_surface, text_rect)
         window.blit(play_image, (WIDTH // 2 - play_width // 4, HEIGHT // 2))
         window.blit(quit_image, (WIDTH // 2 - quit_width // 4, HEIGHT // 2 + quit_height))
 
@@ -362,4 +369,3 @@ if __name__ == "__main__":
         pygame.display.flip()
 
     main(window)
-

@@ -5,20 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aeade9b8-e27a-444d-8051-f54d06950088" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build/game/Analysis-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/EXE-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/PKG-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/PYZ-00.pyz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/PYZ-00.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/base_library.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/game.pkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/warn-game.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/game/xref-game.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/head.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/game.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/game.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/game/xref-game.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/xref-game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/game.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/head.png" beforeDir="false" afterPath="$PROJECT_DIR$/head.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.spec" beforeDir="false" afterPath="$PROJECT_DIR$/game.spec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,18 +58,20 @@
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/THANH TUNG/PycharmProjects/pygame&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/THANH TUNG/PycharmProjects/Zombie_Smasher&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\THANH TUNG\PycharmProjects\Zombie_Smasher" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\zombie_sound" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\zombie" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\THANH TUNG\PycharmProjects\Zombie_Smasher" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\assets" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame\example" />
       <recent name="C:\Users\THANH TUNG\PycharmProjects\pygame" />
