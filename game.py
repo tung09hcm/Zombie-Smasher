@@ -307,20 +307,24 @@ def main(window):
 
     gameover = pygame.image.load("gameover.png")  # Load once, outside the loop
     sound_effects['Zombie_idle2'].play()
-    print("HITS: " + str(hits))
+
     default_font = pygame.font.SysFont(None, 80)
     text_surface = default_font.render("X " + str(hits), True, (255, 255, 255))
+
+    replay_surface = default_font.render("Press Enter to Play Again ", True, (255, 255, 255))
     while True:
         window.blit(gameover, (0, 0))
         window.blit(text_surface, (380, 410))
+        window.blit(replay_surface, (40,500))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    main(window)
         pygame.display.flip()
-
-
-if __name__ == "__main__":
+def menu(window):
     menu_image = pygame.image.load("game_background.png")  # Load once, outside the loop
     play_image = pygame.image.load("play_button.png")
     quit_image = pygame.image.load("quit_button.png")
@@ -368,4 +372,6 @@ if __name__ == "__main__":
             break
         pygame.display.flip()
 
+if __name__ == "__main__":
+    menu(window)
     main(window)

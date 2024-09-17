@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aeade9b8-e27a-444d-8051-f54d06950088" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/head.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/zombie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/zombie_head.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/Analysis-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/EXE-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/PKG-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/PYZ-00.pyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/PYZ-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/base_library.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/game.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/game.pkg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/game/xref-game.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/game/xref-game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.exe" beforeDir="false" afterPath="$PROJECT_DIR$/game.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.spec" beforeDir="false" afterPath="$PROJECT_DIR$/game.spec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
